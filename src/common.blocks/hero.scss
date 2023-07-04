@@ -1,0 +1,18 @@
+@use 'variables' as *;
+@use 'mixins';
+
+.hero {
+	display: flex;
+	position: relative;
+	&__background {
+		@include mixins.sublayer;
+		object-fit: cover;
+	}
+	&__content {
+		@include mixins.container;
+		z-index: 1;
+	}
+	&__action {
+		margin-top: $defaultPadding;
+	}
+}

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html class="no-js" lang="ru">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="theme-color" content="#000000" />
+		<link rel="icon" href="/favicon.ico" />
+		<link rel="manifest" href="/manifest.json" />
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+		<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000" />
+		<meta name="msapplication-TileColor" content="#000000" />
+
+		<title>Film!</title>
+		<meta name="description" content="" />
+	</head>
+	<body class="page">
+		<div class="page__wrapper">
+			<header class="header">
+				<a class="header__logo" href="/">
+					<img
+						class="header__logo-image"
+						src="<%=require('../images/logo.svg')%>"
+						alt="Film! logo"
+					/>
+				</a>
+				<button class="header__basket">
+					<span class="header__basket-counter">0</span>
+				</button>
+			</header>
+
+			<main class="hero">
+				<img class="hero__background" />
+				<div class="hero__content">
+					<button class="button hero__action">Купить билет</button>
+				</div>
+			</main>
+
+			<footer class="gallery"></footer>
+		</div>
+
+		<template id="film-info">
+			<article class="film">
+				<div class="film__about">
+					<span class="film__rating"></span>
+					<span class="film__director"></span>
+					<span class="film__tags"></span>
+				</div>
+				<h1 class="film__title"></h1>
+				<p class="film__description"></p>
+			</article>
+		</template>
+
+		<template id="film-card">
+			<button class="card">
+				<img class="card__image" src="" alt="" />
+				<span class="card__text"></span>
+			</button>
+		</template>
+
+		<template id="modal">
+			<div class="modal">
+				<div class="modal__container">
+					<button class="modal__close" aria-label="закрыть"></button>
+					<div class="modal__header"></div>
+					<div class="modal__content"></div>
+					<div class="modal__footer">
+						<span class="modal__message"></span>
+					</div>
+				</div>
+			</div>
+		</template>
+
+		<template id="schedule">
+			<div class="schedule">
+				<div class="schedule__day">
+					<span class="schedule__label">18 мая</span>
+					<button class="schedule__time">09:00</button>
+				</div>
+			</div>
+		</template>
+
+		<template id="places">
+			<div class="places">
+				<div class="places__screen">Экран</div>
+				<div class="places__row">
+					<div class="places__label">Ряд 1</div>
+					<div class="places__seats">
+						<button class="places__seat">1</button>
+					</div>
+				</div>
+			</div>
+		</template>
+
+		<template id="film-head">
+			<div class="film film_compact">
+				<div class="film__about">
+					<button class="film__back">Назад</button>
+				</div>
+				<h2 class="film__title">Корзина</h2>
+			</div>
+		</template>
+
+		<template id="ticket">
+			<div class="basket__item ticket">
+				<div class="ticket__info">
+					<strong class="ticket__place">Ряд 2, место 7</strong>
+					<span class="ticket__session"
+						>Архитекторы общества, 19 мая, 09:00</span
+					>
+				</div>
+				<div>
+					<strong class="ticket__price">350</strong>
+					<span>С учетом НДС</span>
+				</div>
+				<button class="ticket__delete" aria-label="delete"></button>
+			</div>
+		</template>
+
+		<template id="basket">
+			<div class="basket"></div>
+		</template>
+
+		<template id="order">
+			<div class="order">
+				<form class="form" name="order">
+					<label class="form__field">
+						<input
+							class="form__input"
+							name="email"
+							type="email"
+							placeholder="Почта"
+						/>
+					</label>
+					<label class="form__field">
+						<input
+							class="form__input"
+							name="phone"
+							type="tel"
+							placeholder="Телефон"
+							pattern="^[0-9\+\-\(\)\s]{11,25}$"
+							data-validation-message="Введите номер в формате '+7 (000) 000-00-00'."
+						/>
+					</label>
+				</form>
+			</div>
+		</template>
+
+		<template id="success">
+			<div class="order-success">
+				<div class="film film_compact">
+					<h2 class="film__title">Заказ оформлен</h2>
+					<p class="film__description">Билеты уже у вас на почте</p>
+					<button class="button order-success__close">На главную</button>
+				</div>
+			</div>
+		</template>
+	</body>
+</html>

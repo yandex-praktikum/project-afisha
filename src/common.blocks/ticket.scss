@@ -1,0 +1,34 @@
+@use 'variables' as *;
+@use 'mixins';
+
+.ticket {
+	@include mixins.flex(row);
+	align-items: center;
+	gap: $defaultPadding;
+
+	&__info {
+		flex-grow: 1;
+	}
+
+	&__place,
+	&__price {
+		display: block;
+		margin-bottom: 1rem;
+		font-size: 2.4rem;
+	}
+
+	&__price::after {
+		content: '₽';
+	}
+
+	&__place::before {
+		content: '➔';
+		margin-right: 0.5rem;
+	}
+
+	&__delete {
+		@include mixins.icon(2rem, 'trash');
+		@include mixins.link($hover, white);
+		opacity: 0.5;
+	}
+}

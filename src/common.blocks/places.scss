@@ -1,0 +1,47 @@
+@use 'variables' as *;
+@use 'mixins';
+
+.places {
+	@include mixins.flex(column);
+	gap: 2rem;
+
+	&__screen {
+		background-color: $background;
+		color: white;
+		border-radius: 0.8rem;
+		padding: 0.5rem 1rem;
+		text-align: center;
+		margin-left: 6rem;
+	}
+
+	&__label {
+		padding: 0.5rem 0;
+		width: 4rem;
+		text-align: left;
+	}
+
+	&__row {
+		@include mixins.flex(row);
+		gap: 2rem;
+	}
+
+	&__seats {
+		@include mixins.flex(row);
+		justify-content: space-between;
+		text-align: center;
+		flex-grow: 1;
+	}
+
+	&__seat {
+		border: none;
+		background-color: $primaryLight;
+		color: white;
+		border-radius: 0.8rem;
+		padding: 0.5rem 1rem;
+		@include mixins.selectable($secondary, 2px, $hover);
+
+		&::after {
+			border-radius: 0.8rem;
+		}
+	}
+}

@@ -1,0 +1,53 @@
+@use 'variables' as *;
+@use 'mixins';
+
+.schedule {
+	@include mixins.flex(row);
+	gap: $defaultPadding;
+
+	&_places {
+		flex-direction: column;
+		gap: 2rem;
+	}
+
+	&__screen {
+		background-color: $background;
+		color: white;
+		border-radius: 0.8rem;
+		padding: 0.5rem 1rem;
+		text-align: center;
+	}
+
+	&__label {
+		padding: 0.5rem 0;
+	}
+
+	&__day,
+	&__row {
+		gap: 2rem;
+		text-align: center;
+	}
+
+	&__day {
+		@include mixins.flex(column);
+	}
+
+	&__row {
+		@include mixins.flex(row);
+		justify-content: space-between;
+	}
+
+	&__time,
+	&__place {
+		border: none;
+		background-color: $primaryLight;
+		color: white;
+		border-radius: 0.8rem;
+		padding: 0.5rem 1rem;
+		@include mixins.selectable($secondary, 2px, $hover);
+
+		&::after {
+			border-radius: 0.8rem;
+		}
+	}
+}

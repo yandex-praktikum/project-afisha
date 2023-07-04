@@ -1,0 +1,202 @@
+openapi: 3.0.0
+servers:
+  # Added by API Auto Mocking Plugin
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/FenixDeveloper/yp-afisha-api/1.0.0
+info:
+  description: Yandex Practicum «Film!» project api
+  version: "1.0.0"
+  title: Afisha Api
+  contact:
+    email: aleksei-mart@yandex-team.ru
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+paths:
+  /films:
+    get:
+      description: return list of films available on this week
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total:
+                    type: number
+                    minimum: 0
+                  items:
+                    type: array
+                    items:
+                      type: object
+                      allOf:
+                        - $ref: '#/components/schemas/Film'
+  /films/{id}/shedule:
+    get:
+      description: return list of films available on this week
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+            format: uuid
+            example: d290f1ee-6c54-4b01-90e6-d701748f0851
+          description: film id value
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total:
+                    type: number
+                    minimum: 0
+                  items:
+                    type: array
+                    items:
+                      type: object
+                      allOf:
+                        - $ref: '#/components/schemas/Shedule'
+  /order:
+    post:
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                total:
+                  type: number
+                  minimum: 0
+                tickets:
+                  type: array
+                  items:
+                    type: object
+                    allOf:
+                      - $ref: '#/components/schemas/Ticket'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total:
+                    type: number
+                    minimum: 0
+                    example: 350
+                  tickets:
+                    type: array
+                    items:
+                      type: object
+                      allOf:
+                        - $ref: '#/components/schemas/Ticket'
+                        - type: object
+                          properties:
+                            id:
+                              type: string
+                              format: uuid
+        '400':
+          $ref: '#/components/responses/BadRequest'
+components:
+  responses:
+    BadRequest:
+      description: Client sent invalid request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The specified resource was not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+          description: error name string
+    Film:
+      type: object
+      required:
+        - id
+      properties:
+        id:
+          type: string
+          format: uuid
+          example: d290f1ee-6c54-4b01-90e6-d701748f0851
+        rating:
+          type: number
+          example: 2.9
+        director:
+          type: string
+          example: 'Итан Райт'
+        tags:
+          type: array
+          items:
+            type: string
+          example: ['Документальный']
+        title:
+          type: string
+          example: 'Архитекторы общества'
+        about:
+          type: string
+          example: 'Документальный фильм, исследующий влияние искусственного интеллекта на общество и этические, философские и социальные последствия технологии.'
+        description:
+          type: string
+          example: 'Документальный фильм Итана Райта исследует влияние технологий на современное общество, уделяя особое внимание роли искусственного интеллекта в формировании нашего будущего. Фильм исследует этические, философские и социальные последствия гонки технологий ИИ и поднимает вопрос: какой мир мы создаём для будущих поколений.'
+        image:
+          type: string
+          example: '/images/bg1s.jpg'
+        cover:
+          type: string
+          example: '/images/bg1c.jpg'
+    Shedule:
+      type: object
+      properties:
+        daytime:
+          type: string
+          format: date-time
+          example: '2023-05-29T10:30:00.001Z'
+        hall:
+          type: string
+          example: '2'
+        rows:
+          type: number
+          example: 5
+        seats:
+          type: number
+          example: 10
+        price:
+          type: number
+          example: 350
+    Ticket:
+      type: object
+      properties:
+        film:
+          type: string
+          format: uuid
+          example: d290f1ee-6c54-4b01-90e6-d701748f0851
+        daytime:
+          type: string
+          format: date-time
+          example: '2023-05-29T10:30:00.001Z'
+        row:
+          type: number
+          example: 2
+        seat:
+          type: number
+          example: 5
+        price:
+          type: number
+          example: 350

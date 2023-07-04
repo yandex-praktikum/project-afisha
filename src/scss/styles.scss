@@ -1,0 +1,22 @@
+@use '../vendor/normalize';
+@use '../vendor/ys-text';
+@use '../vendor/garamond';
+@use '../vendor/glyphter';
+
+@use '../common.blocks/page';
+@use '../common.blocks/header';
+@use '../common.blocks/hero';
+@use '../common.blocks/film';
+@use '../common.blocks/button';
+@use '../common.blocks/gallery';
+@use '../common.blocks/card';
+@use '../common.blocks/modal';
+@use '../common.blocks/schedule';
+@use '../common.blocks/places';
+@use '../common.blocks/basket';
+@use '../common.blocks/ticket';
+@use '../common.blocks/form';
+@use '../common.blocks/order-success';
+
+@use 'variables' as *;
+@use 'mixins';

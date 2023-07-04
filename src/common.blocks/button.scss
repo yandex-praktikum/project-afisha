@@ -1,0 +1,6 @@
+@use 'variables' as *;
+@use 'mixins';
+
+.button {
+	@include mixins.button($primary, white, $secondary);
+}

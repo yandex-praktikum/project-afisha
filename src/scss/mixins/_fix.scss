@@ -1,0 +1,10 @@
+@mixin clearfix {
+	content: '';
+	display: table;
+	clear: both;
+}
+
+@mixin va-fix($fix) {
+	position: relative;
+	top: $fix;
+}

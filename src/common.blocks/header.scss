@@ -1,0 +1,46 @@
+@use 'variables' as *;
+@use 'mixins';
+
+.header {
+	@include mixins.container;
+	@include mixins.flex(row);
+	height: $headerHeight;
+	align-items: center;
+	justify-content: space-between;
+
+	&__logo,
+	&__basket {
+		height: $headerElementsSize;
+	}
+
+	&__logo {
+		&-image {
+			display: block;
+			height: 100%;
+		}
+	}
+
+	&__basket {
+		@include mixins.icon($headerElementsSize, 'basket');
+		@include mixins.link($primary, $hover);
+		border: none;
+		position: relative;
+		cursor: pointer;
+
+		&-counter {
+			position: absolute;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			top: 0;
+			right: -0.2rem;
+			width: 0.8rem;
+			height: 0.8rem;
+			font-size: 0.5rem;
+			background-color: $secondary;
+			color: $background;
+			border-radius: 100%;
+			font-weight: 600;
+		}
+	}
+}

@@ -1,0 +1,17 @@
+@use 'variables' as *;
+@use 'mixins';
+
+.gallery {
+	@include mixins.container;
+	@include mixins.grid(300px, 1.5rem);
+
+	&__item {
+		border: none;
+		border-radius: 0.8rem;
+		@include mixins.selectable($secondary, 2px, $hover);
+
+		&::after {
+			border-radius: 0.8rem;
+		}
+	}
+}

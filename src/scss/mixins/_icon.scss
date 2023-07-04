@@ -1,0 +1,13 @@
+@use 'variables' as *;
+@use 'interactive' as mixins;
+@use '../../vendor/glyphter';
+
+@mixin icon($size, $name) {
+	display: inline-block;
+	width: $size;
+	height: $size;
+	font-size: $size;
+	padding: 0;
+	@extend .icon;
+	@extend .icon-#{$name};
+}

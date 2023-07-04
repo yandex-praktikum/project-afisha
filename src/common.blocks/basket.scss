@@ -1,0 +1,19 @@
+@use 'variables' as *;
+@use 'mixins';
+
+.basket {
+	@include mixins.flex(column);
+	gap: 2rem;
+
+	&__item {
+		background: $primaryLight;
+		padding: $defaultPadding;
+		border-radius: 3rem;
+	}
+
+	&__delete-item {
+		@include mixins.icon(2rem, 'trash');
+		@include mixins.link($hover, white);
+		opacity: 0.5;
+	}
+}

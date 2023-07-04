@@ -1,0 +1,21 @@
+@use 'variables' as *;
+@use 'mixins';
+
+.order-success {
+	@include mixins.flex(column);
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	gap: 1rem;
+
+	&::before {
+		content: ' ';
+		@include mixins.background('../images/check-circle.svg');
+		width: 12rem;
+		height: 12rem;
+	}
+
+	&__close {
+		margin-top: 2rem;
+	}
+}

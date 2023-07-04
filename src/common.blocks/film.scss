@@ -1,0 +1,68 @@
+@use 'variables' as *;
+@use 'mixins';
+
+.film {
+	&__about {
+		@include mixins.flex(row);
+		gap: 1.5rem;
+	}
+
+	&__about > * {
+		display: flex;
+		align-items: center;
+		font-size: 1rem;
+	}
+
+	&__rating::before {
+		@include mixins.icon(0.7rem, 'star');
+		@include mixins.va-fix(-1px);
+		margin-right: 0.25rem;
+		color: $secondary;
+	}
+
+	&__tags::before {
+		content: '•';
+		margin-right: 0.25rem;
+		font-size: 1.2rem;
+		line-height: 1rem;
+		color: $secondary;
+		@include mixins.va-fix(-2px);
+	}
+
+	&__back {
+		@include mixins.link(white, $secondary);
+		display: flex;
+		gap: 0.25rem;
+		&::before {
+			@include mixins.icon(0.7rem, 'back');
+		}
+	}
+
+	&__title {
+		font-family: $titleFont;
+		font-size: $titleFontSize;
+		line-height: 93%;
+		margin: 0.2em 0;
+	}
+
+	&__description {
+		font-size: $mainFontSize;
+		font-weight: 400;
+		line-height: 1.4em;
+		max-width: 82%;
+		margin: 0;
+		margin-block: 0;
+	}
+}
+
+.film_compact {
+	font-size: 2vh;
+
+	.film__title {
+		font-size: 4em;
+	}
+
+	.film__description {
+		max-width: inherit;
+	}
+}

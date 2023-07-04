@@ -1,0 +1,11 @@
+@mixin background($image, $size: cover) {
+	background: url($image) no-repeat center;
+	background-size: $size;
+}
+
+@mixin mask($image, $size: cover) {
+	mask-image: url($image);
+	mask-repeat: no-repeat;
+	mask-position: center;
+	mask-size: $size;
+}
